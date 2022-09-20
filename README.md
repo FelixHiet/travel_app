@@ -1,4 +1,5 @@
 # Travel app
+Work in progress. Uses Google cloud javascript api.
 ![travelApp](https://user-images.githubusercontent.com/49163212/191231527-d189a95b-b021-4166-97fe-4217dc51bfd5.jpg)
 
 

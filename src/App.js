@@ -9,15 +9,27 @@ import Map from "./components/Map/Map";
 const App = () => {
   const [places, setPlaces] = useState([]);
 
-  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0});
-  const [bounds, setBounds] = useState(null);
+  const [coordinates, setCoordinates] = useState({});
+  const [bounds, setBounds] = useState({});
 
   useEffect(() => {
-    getPlacesData().then((data) => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({ lat: latitude, lng: longitude });
+      }
+    );
+  }, []);
+
+  useEffect(() => {
+    getPlacesData(bounds.sw, bounds.ne).then((data) => {
       console.log(data);
+
       setPlaces(data);
     });
-  }, []); // have to call .then when you have an async function
+  }, [coordinates, bounds]);
+  // have to call .then when you have an async function
+  //if you want to update the map everytime the map changes had to add coordinates and bounds inside the array
+  // sw south west, ne north east and so on...
 
   return (
     <>
@@ -42,4 +54,4 @@ const App = () => {
 export default App;
 
 // installs 15:00
-// 25:00
+// 1:01:00

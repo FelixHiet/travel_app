@@ -18,6 +18,8 @@ import useStyles from "./styles";
 const PlaceDetails = ({ place }) => {
   const classes = useStyles();
 
+  if (!place) return "Loading ..."; // just a test code
+
   return (
     <Card elevation={6}>
       <CardMedia
@@ -108,6 +110,14 @@ const PlaceDetails = ({ place }) => {
             onClick={() => window.open(place.web_url, "_blank")}
           >
             Trip Advisor
+          </Button>
+
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => window.open(place.website, "_blank")}
+          >
+            Website
           </Button>
         </CardActions>
       </CardContent>

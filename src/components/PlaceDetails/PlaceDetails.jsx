@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip } from "@material-ui/core";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PhoneIcon from "@material-ui/icons/Phone";
@@ -6,10 +6,12 @@ import Rating from "@material-ui/lab/Rating";
 
 import useStyles from "./styles";
 
-const PlaceDetails = ({ place }) => {
+const PlaceDetails = ({ place, selected, refProp }) => {
   const classes = useStyles();
-  //<Rating size="small" value={Number(place.rating)} readOnly />
-  if (!place) return "Loading ..."; // just a test code
+ 
+
+  
+  if (selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start" });
 
   return (
     <Card elevation={6}>

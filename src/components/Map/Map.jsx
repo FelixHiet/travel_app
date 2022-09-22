@@ -28,32 +28,15 @@ const Map = ({ setCoordinates, setBounds, coordinates, places }) => {
         onChildClick={""}
       >
         {places?.map((place, i) => (
-          <div
-            className={classes.markerContainer}
-            lat={Number(place.latitude)}
-            lng={Number(place.longitude)}
-            key={i}
-          >
+          <div className={classes.markerContainer} lat={Number(place.latitude)} lng={Number(place.longitude)} key={i}>
             {!isDesktop ? (
               <LocationOnOutlinedIcon color="primary" fontSize="large" />
             ) : (
               <Paper elevation={3} className={classes.paper}>
-                <Typography
-                  className={classes.typography}
-                  variant="subtitle2"
-                  gutterBottom
-                >
+                <Typography className={classes.typography} variant="subtitle2" gutterBottom>
                   {place.name}
                 </Typography>
-                <img
-                  className={classes.pointer}
-                  src={
-                    place.photo
-                      ? place.photo.images.large.url
-                      : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
-                  }
-                  alt={place.name}
-                />
+                <img className={classes.pointer} src={place.photo ? place.photo.images.large.url : "https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"} alt={place.name} />
                 <Rating size="small" value={Number(place.rating)} readOnly />
               </Paper>
             )}
